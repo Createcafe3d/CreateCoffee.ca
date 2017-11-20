@@ -20,7 +20,7 @@ export class IntroSliderComponent implements OnInit {
         {
             title: 'Customization',
             text: 'Download our PDF and design your own label for you bag. Great for gifts, events, and offices!',
-            imageUrl: 'http://lorempixel.com/1920/600/food/3'
+            imageUrl: '/assets/images/coffee-laptop.jpg'
         },
     ];
     private slideshowInterval: any;
