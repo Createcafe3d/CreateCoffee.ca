@@ -1,0 +1,17 @@
+<div class="intro-slider">
+    <div class="controls">
+        <div class="prev" (click)="prevSlide()"><i class="material-icons">keyboard_arrow_left</i></div>
+        <div class="next" (click)="nextSlide(true)"><i class="material-icons">keyboard_arrow_right</i></div>
+    </div>
+    <div class="slides">
+        <div class="slide-wrapper" [style.margin-left]="sliderMargins">
+            <intro-slider-slide *ngFor="let slide of slides" [slide]="slide"><div [innerHTML]="slide.text"></div></intro-slider-slide>            
+        </div>
+    </div>
+    <div class="indicators">
+        <div class="indicator" 
+            *ngFor="let slide of slides; let index = index" 
+            [ngClass]="{'active': index == slideIndex}" 
+            (click)="setSlide(index)"></div>
+    </div>
+</div>
