@@ -32,10 +32,11 @@
             }
             .hash-tag {
                 width: 150px;
-                margin: 20px auto;
+                margin: 20px auto 0;
                 a {
                     font-size: 15pt;
                     color: $very-dark-grey;
+                    text-decoration: none;
                 }
             }
         }

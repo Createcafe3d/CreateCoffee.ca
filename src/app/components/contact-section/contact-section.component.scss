@@ -1,0 +1,13 @@
+@import '../../common/partials/colors';
+
+.contact-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    button {
+        background-color: $primary-color-dark;
+        font-size: 14pt;
+        font-weight: 300;
+    }
+}

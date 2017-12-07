@@ -10,13 +10,15 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
 import { CoffeeCustomizerComponent } from './components/customizer/customizer.component';
 import { ProductsSectionComponent } from './components/products-section/products-section.component';
 import { AboutSectionComponent } from './components/about-section/about-section.component';
+import { ContactSectionComponent } from './components/contact-section/contact-section.component';
+import { PageFooterComponent } from './components/page-footer/page-footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent, IntroSliderComponent, IntroSliderSlideComponent,
       PageHeaderComponent, CoffeeCustomizerComponent, ProductsSectionComponent,
-      AboutSectionComponent
+      AboutSectionComponent, ContactSectionComponent, PageFooterComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatButtonModule, MatCardModule, MatChipsModule
