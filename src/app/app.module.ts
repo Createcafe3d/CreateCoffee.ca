@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatChipsModule } from '@angular/material';
+import { MatButtonModule, MatCardModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { IntroSliderComponent } from './components/intro-slider/intro-slider.component';
@@ -13,6 +13,8 @@ import { AboutSectionComponent } from './components/about-section/about-section.
 import { ContactSectionComponent } from './components/contact-section/contact-section.component';
 import { PageFooterComponent } from './components/page-footer/page-footer.component';
 
+import { ShopifyService } from './services/shopify/shopify.service';
+
 
 @NgModule({
   declarations: [
@@ -21,9 +23,9 @@ import { PageFooterComponent } from './components/page-footer/page-footer.compon
       AboutSectionComponent, ContactSectionComponent, PageFooterComponent
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, MatButtonModule, MatCardModule, MatChipsModule
+    BrowserModule, BrowserAnimationsModule, MatButtonModule, MatCardModule
   ],
-  providers: [],
+  providers: [ShopifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
