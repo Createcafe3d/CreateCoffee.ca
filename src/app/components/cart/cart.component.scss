@@ -1,0 +1,22 @@
+@import '../../common/partials/colors';
+
+button.cart-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: $primary-color-dark;
+  color: $white;
+  z-index: 50;
+  .count {
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid $very-dark-grey;
+    background-color: $super-dark-grey;
+    color: $white;
+    position: absolute;
+    right: -6px;
+    bottom: -6px;
+    padding: 0 8px;
+    z-index: 20;
+  }
+}

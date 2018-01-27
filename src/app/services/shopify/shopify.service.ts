@@ -102,6 +102,10 @@ export class ShopifyService {
         ).then(this.setCheckoutFromResponse.bind(this));
     }
 
+    public get cartItems(): LineItem[] {
+        return this.checkout ? this.checkout.lineItems : [];
+    }
+
     private setCheckoutFromResponse(response): void {
         console.log(response);
         this.checkout = response;
@@ -110,12 +114,24 @@ export class ShopifyService {
 
 interface Checkout {
     id: string;
-    lineItems: any[];
+    lineItems: LineItem[];
     ready: boolean;
     subtotalPrice: string;
     totalPrice: string;
     totalTax: string;
     webUrl: string;
+}
+
+export interface LineItem {
+    id: string;
+    quantity: number;
+    title: string;
+    variant: {
+        image: {
+            altText: string;
+            src: string;
+        }
+    };
 }
 
 export class Product {
