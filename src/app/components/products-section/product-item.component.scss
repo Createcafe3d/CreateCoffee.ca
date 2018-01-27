@@ -11,4 +11,10 @@ mat-card.product-item {
   mat-card-content {
     height: 80px;
   }
+  mat-card-actions {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
 }
