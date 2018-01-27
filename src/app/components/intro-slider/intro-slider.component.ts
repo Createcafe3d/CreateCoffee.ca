@@ -25,7 +25,7 @@ export class IntroSliderComponent implements OnInit {
     ];
     private slideshowInterval: any;
     private slideIndex: number = 0;
-    private nextSlide = (stopShow: boolean = false): void => {
+    public nextSlide = (stopShow: boolean = false): void => {
         if (stopShow) {
             this.stopSlideshow();
         }
@@ -35,7 +35,7 @@ export class IntroSliderComponent implements OnInit {
             this.slideIndex = 0;
         }
     }
-    private prevSlide = (): void => {
+    public prevSlide = (): void => {
         this.stopSlideshow();
         if (this.slideIndex > 0) {
             this.slideIndex = this.slideIndex - 1;

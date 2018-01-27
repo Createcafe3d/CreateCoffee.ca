@@ -9,6 +9,7 @@ import { IntroSliderSlideComponent } from './components/intro-slider/slide.compo
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { CoffeeCustomizerComponent } from './components/customizer/customizer.component';
 import { ProductsSectionComponent } from './components/products-section/products-section.component';
+import { ProductItemComponent } from './components/products-section/product-item.component';
 import { AboutSectionComponent } from './components/about-section/about-section.component';
 import { ContactSectionComponent } from './components/contact-section/contact-section.component';
 import { PageFooterComponent } from './components/page-footer/page-footer.component';
@@ -20,7 +21,8 @@ import { ShopifyService } from './services/shopify/shopify.service';
   declarations: [
     AppComponent, IntroSliderComponent, IntroSliderSlideComponent,
       PageHeaderComponent, CoffeeCustomizerComponent, ProductsSectionComponent,
-      AboutSectionComponent, ContactSectionComponent, PageFooterComponent
+      AboutSectionComponent, ContactSectionComponent, PageFooterComponent,
+      ProductItemComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatButtonModule, MatCardModule

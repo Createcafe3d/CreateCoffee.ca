@@ -1,0 +1,14 @@
+mat-card.product-item {
+  width: 300px;
+  margin: 0.5em;
+  .product-image {
+    height: 300px;
+    width: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  mat-card-content {
+    height: 80px;
+  }
+}

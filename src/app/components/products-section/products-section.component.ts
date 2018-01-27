@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { ShopifyService } from '../../services/shopify/shopify.service';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Component, OnInit } from '@angular/core';
+import { ShopifyService, Product } from '../../services/shopify/shopify.service';
 
 @Component({
   selector: 'products-section',
@@ -11,5 +10,9 @@ export class ProductsSectionComponent implements OnInit {
   constructor(private shopifyService: ShopifyService) {}
   ngOnInit(): void {
     this.shopifyService.fetchAllProducts();
+  }
+
+  get products(): Product[] {
+    return this.shopifyService.loadedProducts;
   }
 }

@@ -1,0 +1,9 @@
+<mat-card class="product-item">
+    <mat-card-header>
+        <mat-card-title>{{ product.shortName }}</mat-card-title>
+    </mat-card-header>
+    <div class="product-image" [ngStyle]="{'background-image': 'url(\'' + product.primaryImage + '\')'}"></div>
+    <mat-card-content>
+      {{ product.shortDescription }}
+    </mat-card-content>
+</mat-card>

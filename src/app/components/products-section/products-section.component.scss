@@ -1,1 +1,8 @@
 @import '../../common/partials/colors';
+
+.products-section {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  overflow-x: scroll;
+}
