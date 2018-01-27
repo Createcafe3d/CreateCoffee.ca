@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule, MatDialogModule, MatListModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { IntroSliderComponent } from './components/intro-slider/intro-slider.component';
@@ -15,7 +15,7 @@ import { ContactSectionComponent } from './components/contact-section/contact-se
 import { PageFooterComponent } from './components/page-footer/page-footer.component';
 
 import { ShopifyService } from './services/shopify/shopify.service';
-import { CartComponent } from './components/cart/cart.component';
+import { CartComponent, CartPreviewDialogComponent } from './components/cart/cart.component';
 
 
 @NgModule({
@@ -23,11 +23,13 @@ import { CartComponent } from './components/cart/cart.component';
     AppComponent, IntroSliderComponent, IntroSliderSlideComponent,
       PageHeaderComponent, CoffeeCustomizerComponent, ProductsSectionComponent,
       AboutSectionComponent, ContactSectionComponent, PageFooterComponent,
-      ProductItemComponent, CartComponent
+      ProductItemComponent, CartComponent, CartPreviewDialogComponent
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, MatButtonModule, MatCardModule, MatIconModule
+    BrowserModule, BrowserAnimationsModule,
+    MatButtonModule, MatCardModule, MatIconModule, MatDialogModule, MatListModule
   ],
+  entryComponents: [CartPreviewDialogComponent],
   providers: [ShopifyService],
   bootstrap: [AppComponent]
 })

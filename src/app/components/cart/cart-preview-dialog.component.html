@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Cart</h1>
+<mat-list class="cart-preview">
+    <mat-list-item>
+      <p matLine>
+        <span class="title"><b>Item</b></span>
+        <span class="quantity"><b>Quantity</b></span>
+      </p>
+      </mat-list-item>
+  <ng-container *ngFor="let item of items">
+    <mat-list-item>
+      <img matListAvatar [src]="item.variant.image.src" alt="item.variant.image.altText">
+      <p matLine>
+        <span class="title">{{ item.title }} </span>
+        <span class="quantity">{{ item.quantity }} <a (click)="removeItem(item.id)">x</a></span>
+      </p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </ng-container>
+  </mat-list>

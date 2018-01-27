@@ -1,5 +1,6 @@
 
-<button mat-fab class="cart-button" color="primary" *ngIf="itemCount > 0">
+<button mat-fab class="cart-button" color="primary" 
+  *ngIf="itemCount > 0" (click)="openCart()">
   <mat-icon>shopping_cart</mat-icon>
   <div class="count">{{ itemCount }}</div>
 </button>

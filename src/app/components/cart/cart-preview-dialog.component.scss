@@ -1,0 +1,11 @@
+mat-list.cart-preview {
+  mat-list-item {
+    p.mat-line {
+      display: flex;
+      flex-flow: row nowrap;
+      .title {
+        flex-grow: 1;
+      }
+    }
+  }
+}

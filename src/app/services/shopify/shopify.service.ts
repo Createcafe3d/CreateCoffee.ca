@@ -75,11 +75,11 @@ export class ShopifyService {
         ).then(this.setCheckoutFromResponse.bind(this));
     }
 
-    updateProductInCart(product: Product, quantity?: number) {
+    updateProductInCart(productId: string, quantity?: number) {
         this.initCheckout();
         quantity = quantity || 1;
         const lineItemsToUpdate = [{
-            variantId: product.id,
+            variantId: productId,
             quantity: quantity
         }];
         this.sdkClient.checkout.updateLineItems(
@@ -87,9 +87,9 @@ export class ShopifyService {
         ).then(this.setCheckoutFromResponse.bind(this));
     }
 
-    removeProductFromCart(product: Product) {
+    removeProductFromCart(productId: string) {
         this.initCheckout();
-        const lineItemsToUpdate = [product.id];
+        const lineItemsToUpdate = [productId];
         this.sdkClient.checkout.removeLineItems(
             this.checkout.id, lineItemsToUpdate
         ).then(this.setCheckoutFromResponse.bind(this));
@@ -130,7 +130,7 @@ export interface LineItem {
         image: {
             altText: string;
             src: string;
-        }
+        };
     };
 }
 
