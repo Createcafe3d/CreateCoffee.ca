@@ -13,59 +13,80 @@
       transform: scale(1.3);
     }
   }
-  mat-list.cart-preview {
-    mat-list-item {
-      p.mat-line {
-        display: flex;
-        flex-flow: row nowrap;
-        .title {
-          flex-grow: 1;
-          &.right {
-            text-align: right;
-            margin-right: 10px;
-            color: $dark-grey;
-          }
+  mat-table.cart-preview {
+    .mat-column-itemName {
+      flex: 2;
+      align-items: center;
+      display: flex;
+    }
+    .mat-column-price, .mat-column-quantity  {
+      text-align: right;
+    }
+    .mat-column-del {
+      max-width: 20px;
+      margin-left: 10px;
+      mat-icon {
+        font-size: 12pt;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        color: $primary-color-light;
+        transition: transform 0.2s ease-in-out;
+        transform: scale(1);
+        &:hover {
+          transform: scale(1.3);
         }
-        .price {
-          width: 75px;
-          text-align: right;
+      }
+    }
+    mat-header-row {
+      padding: 0;
+    }
+    mat-row {
+      padding: 0;
+      mat-cell {
+        padding: 10px 0;
+        img.preview-img{
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          border: 1px solid $med-grey;
+          margin-right: 10px;
         }
-        .quantity {
+        &.mat-column-itemName {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+        }
+        &.mat-column-quantity {
           display: flex;
           align-items: center;
           justify-content: flex-end;
-          mat-icon {
-            font-size: 12pt;
-            width: 16px;
-            height: 16px;
-            margin-left: 10px;
-            cursor: pointer;
-            color: $primary-color-light;
-            transition: transform 0.2s ease-in-out;
-            transform: scale(1);
-            &:hover {
-              transform: scale(1.3);
-            }
-          }
           a {
             margin: 0 5px;
             color: $dark-grey;
             cursor: pointer;
           }
-          &.right {
-            width: 70px;
-            margin-right: 20px;
-          }
         }
       }
-      &:first-child {
-        .price {
-          margin-right: 16px;
-        }
-        .quantity {
-          margin-right: 30px;
-        }
-      }
+    }
+  }
+}
+
+.totals {
+  .row {
+    display: flex;
+    width: 100%;
+    margin: 5px -30px;
+    .name {
+      flex-grow: 1;
+      text-align: right;
+    }
+    .value {
+      min-width: 60px;
+      text-align: right;
+      text-align: right;
+      flex-shrink: 0;
     }
   }
 }

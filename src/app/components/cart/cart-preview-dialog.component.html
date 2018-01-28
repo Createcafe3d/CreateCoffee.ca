@@ -1,48 +1,52 @@
 <div class="cart-preview-dialog">
 <h1 mat-dialog-title>Cart</h1>
 <mat-icon class="dialog-close" (click)="close()">close</mat-icon>
-<mat-list class="cart-preview">
-    <mat-list-item>
-      <p matLine>
-        <span class="title"><b>Item</b></span>
-        <span class="quantity"><b>Quantity</b></span>
-        <span class="price"><b>Price</b></span>
-      </p>
-      </mat-list-item>
-  <ng-container *ngFor="let item of items">
-    <mat-list-item>
-      <img matListAvatar [src]="item.variant.image.src" alt="item.variant.image.altText">
-      <p matLine>
-        <span class="title">{{ item.title }} </span>
-        <span class="quantity">
-          <a (click)="decreaseQuantity(item.id, item.quantity)">-</a>
-            {{ item.quantity }}
-          <a (click)="increaseQuantity(item.id, item.quantity)">+</a>
-          <mat-icon (click)="removeItem(item.id)">close</mat-icon></span>
-        <span class="price">${{ getPrice(item.quantity, item.variant.price) }}</span>
-      </p>
-    </mat-list-item>
-    <mat-divider></mat-divider>
+
+<mat-table [dataSource]="tableItems" class="cart-preview">
+  <ng-container matColumnDef="itemName">
+    <mat-header-cell *matHeaderCellDef>Item</mat-header-cell>
+    <mat-cell *matCellDef="let item">
+      <img class="preview-img" [src]="item.variant.image.src" alt="item.variant.image.altText" />
+      {{ getShortName(item.title) }}
+    </mat-cell>
   </ng-container>
-  <mat-list-item>
-      <p matLine>
-    <span class="title right">Subtotal:</span>
-    <span class="quantity right">${{ totals.subtotal }}</span>
-    </p>
-  </mat-list-item>
-  <mat-list-item>
-      <p matLine>
-    <span class="title right">Taxes:</span>
-    <span class="quantity right">${{ totals.taxes }}</span>
-    </p>
-  </mat-list-item>
-  <mat-list-item>
-      <p matLine>
-      <span class="title right">Total:</span>
-      <span class="quantity right"><b>${{ totals.total }}</b></span>
-      </p>
-    </mat-list-item>
-  </mat-list>
+  <ng-container matColumnDef="quantity">
+    <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+    <mat-cell *matCellDef="let item">
+      <a (click)="decreaseQuantity(item.id, item.quantity, item.title)">-</a>
+        {{ item.quantity }}
+      <a (click)="increaseQuantity(item.id, item.quantity)">+</a>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+    <mat-cell *matCellDef="let item">
+      ${{ getPrice(item.quantity, item.variant.price) }}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="del">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let item">
+      <mat-icon (click)="removeItem(item.id, item.title)">close</mat-icon>
+      </mat-cell>
+    </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<div class="totals">
+  <div class="row">
+    <div class="name">Subtotal:</div>
+    <div class="value">${{ totals.subtotal }}</div>
+  </div>
+  <div class="row">
+    <div class="name">Taxes:</div>
+    <div class="value">${{ totals.taxes }}</div>
+  </div>
+  <div class="row">
+    <div class="name">Subtotal:</div>
+    <div class="value"><b>${{ totals.total }}</b></div>
+  </div>
+</div>
   </div>
   <mat-dialog-actions>
     <button mat-button (click)="clearCart()">Clear Cart</button>

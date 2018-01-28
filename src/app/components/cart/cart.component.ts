@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { ShopifyService, LineItem, Totals } from '../../services/shopify/shopify.service';
-import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatTableDataSource, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'create-coffee-cart',
@@ -28,14 +28,21 @@ export class CartComponent {
 })
 export class CartPreviewDialogComponent {
 
+  displayedColumns = ['itemName', 'quantity', 'price', 'del'];
+
   constructor(
     public dialogRef: MatDialogRef<CartPreviewDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private snackBar: MatSnackBar,
     private shopify: ShopifyService
   ) { }
 
   get items(): LineItem[] {
     return this.shopify.cartItems;
+  }
+
+  get tableItems(): MatTableDataSource<LineItem> {
+    return new MatTableDataSource<LineItem>(this.items);
   }
 
   get totals(): Totals {
@@ -52,11 +59,14 @@ export class CartPreviewDialogComponent {
       itemsToRemove.push(item.id);
     });
     this.shopify.removeProductsFromCart(itemsToRemove);
+    this.snackBar.open('Cleared cart.', null, {duration: 1000});
     this.dialogRef.close();
   }
 
-  removeItem(productId: string) {
+  removeItem(productId: string, productName?: string) {
     this.shopify.removeProductsFromCart([productId]);
+    const name = productName ? '"' + this.getShortName(productName, 25) + '"' : 'item';
+    this.snackBar.open('Removed ' + name + ' from cart.', null, {duration: 1000});
     if (this.items.length < 2) {
       this.dialogRef.close();
     }
@@ -66,9 +76,9 @@ export class CartPreviewDialogComponent {
     this.shopify.updateProductInCart(productId, (initialQuantity + 1));
   }
 
-  decreaseQuantity(productId: string, initialQuantity: number) {
+  decreaseQuantity(productId: string, initialQuantity: number, productName?: string) {
     if (initialQuantity < 2) {
-      this.removeItem(productId)
+      this.removeItem(productId, productName);
     } else {
       this.shopify.updateProductInCart(productId, (initialQuantity - 1));
     }
@@ -76,6 +86,14 @@ export class CartPreviewDialogComponent {
 
   getPrice(quantity: number, price: string) {
     return quantity * parseFloat(price);
+  }
+
+  getShortName(name: string, stripAt?: number): string {
+    stripAt = stripAt || 35;
+    if (name.length > stripAt) {
+      return name.slice(0, stripAt - 3) + '...';
+    }
+    return name;
   }
 
   onNoClick(): void {

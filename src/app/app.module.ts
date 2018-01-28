@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatIconModule, MatDialogModule, MatListModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule, MatDialogModule, MatTableModule, MatSnackBarModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { IntroSliderComponent } from './components/intro-slider/intro-slider.component';
@@ -27,7 +27,8 @@ import { CartComponent, CartPreviewDialogComponent } from './components/cart/car
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
-    MatButtonModule, MatCardModule, MatIconModule, MatDialogModule, MatListModule
+    MatButtonModule, MatCardModule, MatIconModule, MatDialogModule, MatTableModule,
+    MatSnackBarModule
   ],
   entryComponents: [CartPreviewDialogComponent],
   providers: [ShopifyService],
