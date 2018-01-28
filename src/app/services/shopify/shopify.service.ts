@@ -16,6 +16,18 @@ export class ShopifyService {
         return this.products;
     }
 
+    get totals(): Totals {
+        return {
+            subtotal: this.checkout.subtotalPrice,
+            taxes: this.checkout.totalTax,
+            total: this.checkout.totalPrice
+        };
+    }
+
+    get checkoutUrl(): string {
+        return this.checkout ? this.checkout.webUrl : '';
+    }
+
     fetchAllProducts(): void {
         this.sdkClient.product.fetchAll().then((products) => {
             this.processProductsFromApiResponse(products);
@@ -79,7 +91,7 @@ export class ShopifyService {
         this.initCheckout();
         quantity = quantity || 1;
         const lineItemsToUpdate = [{
-            variantId: productId,
+            id: productId,
             quantity: quantity
         }];
         this.sdkClient.checkout.updateLineItems(
@@ -87,11 +99,10 @@ export class ShopifyService {
         ).then(this.setCheckoutFromResponse.bind(this));
     }
 
-    removeProductFromCart(productId: string) {
+    removeProductsFromCart(productIds: string[]) {
         this.initCheckout();
-        const lineItemsToUpdate = [productId];
         this.sdkClient.checkout.removeLineItems(
-            this.checkout.id, lineItemsToUpdate
+            this.checkout.id, productIds
         ).then(this.setCheckoutFromResponse.bind(this));
     }
 
@@ -131,7 +142,14 @@ export interface LineItem {
             altText: string;
             src: string;
         };
+        price: string;
     };
+}
+
+export interface Totals {
+    subtotal: string;
+    taxes: string;
+    total: string;
 }
 
 export class Product {

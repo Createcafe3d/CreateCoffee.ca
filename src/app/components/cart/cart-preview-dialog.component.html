@@ -1,9 +1,12 @@
+<div class="cart-preview-dialog">
 <h1 mat-dialog-title>Cart</h1>
+<mat-icon class="dialog-close" (click)="close()">close</mat-icon>
 <mat-list class="cart-preview">
     <mat-list-item>
       <p matLine>
         <span class="title"><b>Item</b></span>
         <span class="quantity"><b>Quantity</b></span>
+        <span class="price"><b>Price</b></span>
       </p>
       </mat-list-item>
   <ng-container *ngFor="let item of items">
@@ -11,9 +14,38 @@
       <img matListAvatar [src]="item.variant.image.src" alt="item.variant.image.altText">
       <p matLine>
         <span class="title">{{ item.title }} </span>
-        <span class="quantity">{{ item.quantity }} <a (click)="removeItem(item.id)">x</a></span>
+        <span class="quantity">
+          <a (click)="decreaseQuantity(item.id, item.quantity)">-</a>
+            {{ item.quantity }}
+          <a (click)="increaseQuantity(item.id, item.quantity)">+</a>
+          <mat-icon (click)="removeItem(item.id)">close</mat-icon></span>
+        <span class="price">${{ getPrice(item.quantity, item.variant.price) }}</span>
       </p>
     </mat-list-item>
     <mat-divider></mat-divider>
   </ng-container>
+  <mat-list-item>
+      <p matLine>
+    <span class="title right">Subtotal:</span>
+    <span class="quantity right">${{ totals.subtotal }}</span>
+    </p>
+  </mat-list-item>
+  <mat-list-item>
+      <p matLine>
+    <span class="title right">Taxes:</span>
+    <span class="quantity right">${{ totals.taxes }}</span>
+    </p>
+  </mat-list-item>
+  <mat-list-item>
+      <p matLine>
+      <span class="title right">Total:</span>
+      <span class="quantity right"><b>${{ totals.total }}</b></span>
+      </p>
+    </mat-list-item>
   </mat-list>
+  </div>
+  <mat-dialog-actions>
+    <button mat-button (click)="clearCart()">Clear Cart</button>
+    <button class="checkout" mat-raised-button color="primary" 
+      (click)="checkout()">Checkout</button>
+  </mat-dialog-actions>
