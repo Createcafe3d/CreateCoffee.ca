@@ -63,7 +63,6 @@ export class CartPreviewDialogComponent {
   }
 
   increaseQuantity(productId: string, initialQuantity: number) {
-    console.log(productId);
     this.shopify.updateProductInCart(productId, (initialQuantity + 1));
   }
 

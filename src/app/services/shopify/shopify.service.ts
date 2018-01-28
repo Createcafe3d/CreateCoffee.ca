@@ -118,7 +118,6 @@ export class ShopifyService {
     }
 
     private setCheckoutFromResponse(response): void {
-        console.log(response);
         this.checkout = response;
     }
 }
@@ -188,6 +187,9 @@ export class Product {
     }
     get primaryImage(): string {
         return this.images[0] || '';
+    }
+    get primaryPrice(): string {
+        return this.variants[0].price;
     }
 }
 

@@ -7,6 +7,7 @@
       {{ product.shortDescription }}
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button (click)="addProductToCart()">Add to Cart</button>
+      <span class="price">${{ product.primaryPrice }}</span>
+      <button mat-raised-button color="primary" (click)="addProductToCart()">Add to Cart</button>
     </mat-card-actions>
 </mat-card>
