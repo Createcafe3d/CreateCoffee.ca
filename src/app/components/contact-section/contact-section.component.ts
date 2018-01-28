@@ -19,7 +19,7 @@ export class ContactSectionComponent {
   selector: 'contact-form-dialog',
   template: `
   <iframe src="https://formbuilder.hulkapps.com/corepage/customform?id=8px9gwJtLrWhKjs8i32ZIQ"
-    id="frame_8px9gwJtLrWhKjs8i32ZIQ" frameborder="0" width="100%" style="height: 488px;"></iframe>
+    id="frame_8px9gwJtLrWhKjs8i32ZIQ" frameborder="0" width="100%" style="height: 100%; min-height: 500px;"></iframe>
   `
 })
 export class ContactFormDialogComponent {
