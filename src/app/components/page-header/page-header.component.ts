@@ -15,7 +15,7 @@ export class PageHeaderComponent implements OnInit {
             }
         });
     }
-    get darkenHeader(): boolean {
+    get condenseHeader(): boolean {
         return this.hasHeaderScrolled;
     }
 }
