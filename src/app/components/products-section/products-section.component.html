@@ -1,5 +1,12 @@
-<div class="products-section">
-    <ng-container *ngFor="let product of products">
-        <product-item [product]="product"></product-item>
-    </ng-container>
+<div class="products-wrapper">
+    <div class="products-section">
+        <ng-container *ngFor="let product of products">
+            <product-item [product]="product"></product-item>
+        </ng-container>
+    </div>
+    <div class="products-nav">
+        <button mat-button [disabled]="!hasPrev" (click)="prevProducts()">Previous Products</button>
+        <div class="spacer">&nbsp;</div>
+        <button mat-button [disabled]="!hasNext" (click)="nextProducts()">Next Products</button>
+    </div>
 </div>
