@@ -20,6 +20,10 @@ export class ProductsSectionComponent implements OnInit {
     return this.shopifyService.loadedProducts.slice(this.currOffset, this.currOffset + this.PAGE_SIZE);
   }
 
+  loadingProducts(): any[] {
+    return new Array(this.PAGE_SIZE).fill({});
+  }
+
   nextProducts(): void {
     if (this.hasNext) {
       this.currOffset += this.PAGE_SIZE - 1;

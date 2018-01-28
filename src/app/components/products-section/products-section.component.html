@@ -3,6 +3,11 @@
         <ng-container *ngFor="let product of products">
             <product-item [product]="product"></product-item>
         </ng-container>
+        <ng-container *ngIf="!products || products.length < 1">
+            <ng-container *ngFor="let product of loadingProducts()">
+              <mat-card class="spacer shimmer"></mat-card>
+            </ng-container>
+        </ng-container>
     </div>
     <div class="products-nav">
         <button mat-button [disabled]="!hasPrev" (click)="prevProducts()">Previous Products</button>
