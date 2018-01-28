@@ -11,7 +11,7 @@ import { CoffeeCustomizerComponent } from './components/customizer/customizer.co
 import { ProductsSectionComponent } from './components/products-section/products-section.component';
 import { ProductItemComponent } from './components/products-section/product-item.component';
 import { AboutSectionComponent } from './components/about-section/about-section.component';
-import { ContactSectionComponent } from './components/contact-section/contact-section.component';
+import { ContactSectionComponent, ContactFormDialogComponent } from './components/contact-section/contact-section.component';
 import { PageFooterComponent } from './components/page-footer/page-footer.component';
 
 import { ShopifyService } from './services/shopify/shopify.service';
@@ -23,14 +23,14 @@ import { CartComponent, CartPreviewDialogComponent } from './components/cart/car
     AppComponent, IntroSliderComponent, IntroSliderSlideComponent,
       PageHeaderComponent, CoffeeCustomizerComponent, ProductsSectionComponent,
       AboutSectionComponent, ContactSectionComponent, PageFooterComponent,
-      ProductItemComponent, CartComponent, CartPreviewDialogComponent
+      ProductItemComponent, CartComponent, CartPreviewDialogComponent, ContactFormDialogComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
     MatButtonModule, MatCardModule, MatIconModule, MatDialogModule, MatTableModule,
     MatSnackBarModule
   ],
-  entryComponents: [CartPreviewDialogComponent],
+  entryComponents: [CartPreviewDialogComponent, ContactFormDialogComponent],
   providers: [ShopifyService],
   bootstrap: [AppComponent]
 })
